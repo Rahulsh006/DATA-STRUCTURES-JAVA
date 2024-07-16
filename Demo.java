@@ -3,49 +3,58 @@ Copyright (C) Deepali Srivastava - All Rights Reserved
 This code is part of DSA course available on CourseGalaxy.com    
 */
 
-package priorityQueue;
+package queueArray;
+
 import java.util.Scanner;
 
-public class Demo 
+public class Demo
 {
-	public static void main(String[] args)
+	public static void main(String[] args) 
 	{
-		int choice,element,elementPriority;
-		Scanner scan = new Scanner(System.in);	
+	      int choice,x;
+	      Scanner scan = new Scanner(System.in);	
+	
+	      QueueA qu = new QueueA(8);
 		
-		PriorityQueueL pq = new PriorityQueueL();
+	      while(true)
+	      {
+		     System.out.println("1.Insert an element in the queue");
+		     System.out.println("2.Delete an element from the queue");
+		     System.out.println("3.Display element at the front");
+		     System.out.println("4.Display all elements of the queue");
+		     System.out.println("5.Display size of the queue");
+	      	 System.out.println("6.Quit");
+		     System.out.print("Enter your choice : ");
+		     choice = scan.nextInt();
+		     if(choice==6)
+			   break;
+	
+		    switch(choice)
+		    {
+		      case 1:
+			    System.out.print("Enter the element to be inserted : ");
+			    x = scan.nextInt();
+			    qu.insert(x);
+			    break;
+		      case 2:
+			    x=qu.Delete();
+			    System.out.println("Element deleted is : " + x);
+			    break;
+		      case 3:
+			    System.out.println("Element at the front is : " + qu.peek());
+			    break;
+		      case 4:
+			    qu.display();
+			    break;
+		      case 5:
+			    System.out.println("Size of queue is " + qu.size());
+			    break;
+		      default:
+			    System.out.println("Wrong choice");
+		  }
+		System.out.println();
 		
-		while(true)
-		{
-			System.out.println("1.Insert a new element");
-			System.out.println("2.Delete an element");
-			System.out.println("3.Display the queue");
-			System.out.println("4.Quit");
-			System.out.print("Enter your choice : ");
-			choice = scan.nextInt();
-			if(choice==4)
-				break;
-
-			switch(choice)
-			{
-			 case 1:
-				System.out.println("Enter the element to be inserted : ");
-				element = scan.nextInt();
-				System.out.println("Enter its priority : ");
-				elementPriority = scan.nextInt();
-				pq.insert(element, elementPriority);
-				break;
-			 case 2:
-				System.out.println("Deleted element is " + pq.Delete());			
-				break;
-			 case 3:
-				pq.display();
-				break;
-			 default :
-				System.out.println("Wrong choice");
-			}
-		}
-		scan.close();
 	}
-
+	 scan.close();
+  }
 }
