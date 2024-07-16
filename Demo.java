@@ -3,58 +3,49 @@ Copyright (C) Deepali Srivastava - All Rights Reserved
 This code is part of DSA course available on CourseGalaxy.com    
 */
 
-package deque;
-
+package priorityQueue;
 import java.util.Scanner;
 
 public class Demo 
 {
-	public static void main(String[] args) 
+	public static void main(String[] args)
 	{
-		int choice,x;
-		
+		int choice,element,elementPriority;
 		Scanner scan = new Scanner(System.in);	
-		DequeA dq = new DequeA(8);
-
+		
+		PriorityQueueL pq = new PriorityQueueL();
+		
 		while(true)
 		{
-			System.out.println("1.Insert at the front end");
-			System.out.println("2.Insert at the rear end");
-			System.out.println("3.Delete from front end");
-			System.out.println("4.Delete from rear end");
-			System.out.println("5.Display all elements of deque");
-			System.out.println("6.Quit");
+			System.out.println("1.Insert a new element");
+			System.out.println("2.Delete an element");
+			System.out.println("3.Display the queue");
+			System.out.println("4.Quit");
 			System.out.print("Enter your choice : ");
 			choice = scan.nextInt();
-			
-			if(choice==6)
+			if(choice==4)
 				break;
 
 			switch(choice)
 			{
-			case 1:
-				System.out.print("Enter the element to be inserted : ");
-				x = scan.nextInt();
-				dq.insertFront(x);
+			 case 1:
+				System.out.println("Enter the element to be inserted : ");
+				element = scan.nextInt();
+				System.out.println("Enter its priority : ");
+				elementPriority = scan.nextInt();
+				pq.insert(element, elementPriority);
 				break;
-			case 2:
-				System.out.print("Enter the element to be inserted : ");
-				x = scan.nextInt();
-				dq.insertRear(x);
+			 case 2:
+				System.out.println("Deleted element is " + pq.Delete());			
 				break;
 			 case 3:
-				System.out.println("Element deleted from front end is " + dq.deleteFront());
+				pq.display();
 				break;
-			 case 4:
-				System.out.println("Element deleted from rear end is  " + dq.deleteRear());
-				break;
-			 case 5:
-				dq.display();
-				break;
-			 default:
+			 default :
 				System.out.println("Wrong choice");
 			}
 		}
 		scan.close();
 	}
+
 }
