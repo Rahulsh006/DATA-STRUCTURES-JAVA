@@ -3,18 +3,16 @@ Copyright (C) Deepali Srivastava - All Rights Reserved
 This code is part of DSA course available on CourseGalaxy.com    
 */
 
-package priorityQueue;
+package queueCircularLinked;
 
 public class Node 
 {
-     public int priority;
      public int info;  
      public Node link;
     
-     public Node(int i, int pr) 
+     public Node(int i) 
 	 {
 		info=i;
-		priority=pr;
 		link=null;
 	 }
 }

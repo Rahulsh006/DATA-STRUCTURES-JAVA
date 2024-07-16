@@ -3,7 +3,7 @@ Copyright (C) Deepali Srivastava - All Rights Reserved
 This code is part of DSA course available on CourseGalaxy.com    
 */
 
-package queueArray;
+package queueCircularLinked;
 
 import java.util.Scanner;
 
@@ -14,7 +14,7 @@ public class Demo
 	      int choice,x;
 	      Scanner scan = new Scanner(System.in);	
 	
-	      QueueA qu = new QueueA(8);
+	      QueueCL qu = new QueueCL();
 		
 	      while(true)
 	      {
@@ -53,8 +53,7 @@ public class Demo
 			    System.out.println("Wrong choice");
 		  }
 		System.out.println();
-		
 	}
-	 scan.close();
+	scan.close();
   }
 }
