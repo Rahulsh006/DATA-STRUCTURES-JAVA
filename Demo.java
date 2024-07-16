@@ -3,7 +3,7 @@ Copyright (C) Deepali Srivastava - All Rights Reserved
 This code is part of DSA course available on CourseGalaxy.com    
 */
 
-package queueCircularLinked;
+package queueLinked;
 
 import java.util.Scanner;
 
@@ -14,7 +14,7 @@ public class Demo
 	      int choice,x;
 	      Scanner scan = new Scanner(System.in);	
 	
-	      QueueCL qu = new QueueCL();
+	      QueueL qu = new QueueL();
 		
 	      while(true)
 	      {
