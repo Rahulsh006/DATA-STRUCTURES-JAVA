@@ -3,18 +3,16 @@ Copyright (C) Deepali Srivastava - All Rights Reserved
 This code is part of DSA course available on CourseGalaxy.com    
 */
 
-package doubleLinkedList;
+package HeaderList;
 
-public class Node
+public class Node 
 {
-	public Node prev;
-	public int info;
-	public Node next; 
-	
-	public Node(int i) 
+	public int info;  
+    public Node link;
+   
+    public Node(int i) 
 	{
 		info=i;
-		prev=null;
-		next=null;
+		link=null;
 	}
 }
