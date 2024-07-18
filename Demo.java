@@ -3,77 +3,131 @@ Copyright (C) Deepali Srivastava - All Rights Reserved
 This code is part of DSA course available on CourseGalaxy.com    
 */
 
-package parentheses;
+package postfix;
+
 import java.util.Scanner;
 
 public class Demo 
 {
 	public static void main(String[] args) 
 	{
-	  String expression;
-
-	  Scanner scan = new Scanner(System.in);	
-	  
-	  System.out.print("Enter an expression with parentheses : ");
-	  expression = scan.nextLine();
+		String infix;
+			
+		Scanner scan = new Scanner(System.in);	
+		  
+		System.out.print("Enter infix expression : ");
+		infix = scan.nextLine();
 		
-	  if(isValid(expression))
-		  System.out.println("Valid expression");
-	  else
-		  System.out.println("Invalid expression");
-	  scan.close();
-     }
+		String postfix = infixToPostfix(infix);
+		
+		System.out.println("Postfix expression is : " + postfix);
+		
+		System.out.println("Value of expression : " + evaluatePostfix(postfix));
+		
+		scan.close();
+	}
 	
+	public static String infixToPostfix(String infix)
+	{
+		String postfix = new String();
+		
+		StackChar st = new StackChar(20);
+				
+		char next,symbol;
+		for(int i=0; i<infix.length(); i++)
+		{
+			symbol=infix.charAt(i);
+			
+			if(symbol==' ' || symbol=='\t') /*ignore blanks and tabs*/
+				continue;
+			
+			switch(symbol)
+			{
+				case '(':
+					st.push(symbol);
+					break;
+				case ')':
+					while((next=st.pop())!='(')
+						postfix = postfix + next;
+					break;
+				case '+':
+				case '-':
+				case '*':
+				case '/':
+				case '%':
+				case '^':
+					while( !st.isEmpty() &&  precedence(st.peek())>= precedence(symbol) )
+						postfix = postfix + st.pop();
+					st.push(symbol);
+					break;
+				default: /*operand*/
+				     postfix = postfix + symbol;
+			}
+		}
+		while(!st.isEmpty()) 
+			postfix = postfix + st.pop();
+		return postfix;
+	}
 	
-	  public static boolean isValid(String expr)
-	  {
-	  	StackA st = new StackA();
+	public static int precedence(char symbol)
+	{
+		switch(symbol)
+		{
+		case '(':
+			return 0;
+		case '+':
+		case '-':
+			return 1;
+		case '*':
+		case '/':
+		case '%':
+			return 2;
+		case '^':
+			return 3;
+		default :
+			return 0;
+		}
+	}
+				
+	public static int evaluatePostfix(String postfix)
+	{
+		StackInt st = new StackInt(20);
+		
+		int x,y;
+		for(int i=0; i<postfix.length(); i++)
+		{
+			if(Character.isDigit(postfix.charAt(i)))
+				st.push(Character.getNumericValue(postfix.charAt(i)));
+			else
+			{
+				x=st.pop();
+				y=st.pop();
+				switch(postfix.charAt(i))
+				{
+				case '+':
+					st.push(y+x); break;
+				case '-':
+					st.push(y-x); break;
+				case '*':
+					st.push(y*x); break;
+				case '/':
+					st.push(y/x); break;
+				case '%':
+					st.push(y%x); break;
+				case '^':
+					st.push(power(y,x));
+				}
+			}
+		}
+		return st.pop();
+	}
 
-	  	char ch;
-	  	for(int i=0; i<expr.length(); i++)
-	  	{
-	  		if(expr.charAt(i)=='(' || expr.charAt(i)=='{' || expr.charAt(i)=='[')
-	  			st.push(expr.charAt(i));
-
-	  		if(expr.charAt(i)==')' || expr.charAt(i)=='}' || expr.charAt(i)==']')
-	  			if(st.isEmpty())    
-	  			{
-	  				System.out.println("Right parentheses are more than left parentheses");
-	  				return false;
-	  			}
-	  			else
-	  			{
-	  				ch=st.pop();
-	  				if(!matchParentheses(ch,expr.charAt(i))) 
-	  				{
-	  					System.out.println("Mismatched parentheses are : "); 
-	  					System.out.println(ch + " and " + expr.charAt(i));	
-	  					return false;
-	  				}
-	  			}
-	  	}
-
-	  	if(st.isEmpty()) 
-	  	{
-	  		System.out.println("Balanced Parentheses"); 
-	  		return true;
-	  	}
-	  	else 
-	  	{
-	  		System.out.println("Left parentheses are more than right parentheses");	
-	  		return false;
-	  	}
-	  	
-	  }
-
-	  public static boolean matchParentheses(char leftPar,char rightPar)
-	  {
-	  	if(leftPar=='[' && rightPar==']')
-	  		return true;
-	  	if(leftPar=='{' && rightPar=='}')
-	  		return true;	
-	  	if(leftPar=='(' && rightPar==')')
-	  		return true;
-	  	return false;
-	  }
+	public static int power(int b,int a)
+	{
+		int i,x=1;
+		for(i=1; i<=a; i++)
+			x=x*b;
+		return x;
+	}
 }
+
