@@ -3,7 +3,7 @@ Copyright (C) Deepali Srivastava - All Rights Reserved
 This code is part of DSA course available on CourseGalaxy.com    
 */
 
-package postfix;
+package stackArray;
 
 import java.util.Scanner;
 
@@ -11,123 +11,50 @@ public class Demo
 {
 	public static void main(String[] args) 
 	{
-		String infix;
-			
+		int choice,x;
 		Scanner scan = new Scanner(System.in);	
-		  
-		System.out.print("Enter infix expression : ");
-		infix = scan.nextLine();
 		
-		String postfix = infixToPostfix(infix);
-		
-		System.out.println("Postfix expression is : " + postfix);
-		
-		System.out.println("Value of expression : " + evaluatePostfix(postfix));
-		
+		StackA st = new StackA(8); 
+
+		while(true)
+		{
+			System.out.println("1.Push an element on the stack");
+			System.out.println("2.Pop an element from the stack");
+			System.out.println("3.Display the top element");
+			System.out.println("4.Display all stack elements");
+			System.out.println("5.Display size of the stack"); 
+			System.out.println("6.Quit");
+			System.out.println("Enter your choice : ");
+			choice = scan.nextInt();
+			
+			if(choice==6)
+				break;
+			
+			switch(choice)
+			{
+			 case 1 :
+				System.out.println("Enter the element to be pushed : ");
+				x=scan.nextInt();
+				st.push(x);
+				break;
+			 case 2:
+				x=st.pop();
+				System.out.println("Popped element is : " + x);
+				break;
+			 case 3:
+				System.out.println("Element at the top is : " + st.peek());
+				break;
+			 case 4:
+				st.display();
+				break;
+			 case 5:
+				System.out.println("Size of stack " + st.size());
+				break;
+			 default:
+				System.out.println("Wrong choice");
+			}
+			System.out.println("");
+		}
 		scan.close();
 	}
-	
-	public static String infixToPostfix(String infix)
-	{
-		String postfix = new String();
-		
-		StackChar st = new StackChar(20);
-				
-		char next,symbol;
-		for(int i=0; i<infix.length(); i++)
-		{
-			symbol=infix.charAt(i);
-			
-			if(symbol==' ' || symbol=='\t') /*ignore blanks and tabs*/
-				continue;
-			
-			switch(symbol)
-			{
-				case '(':
-					st.push(symbol);
-					break;
-				case ')':
-					while((next=st.pop())!='(')
-						postfix = postfix + next;
-					break;
-				case '+':
-				case '-':
-				case '*':
-				case '/':
-				case '%':
-				case '^':
-					while( !st.isEmpty() &&  precedence(st.peek())>= precedence(symbol) )
-						postfix = postfix + st.pop();
-					st.push(symbol);
-					break;
-				default: /*operand*/
-				     postfix = postfix + symbol;
-			}
-		}
-		while(!st.isEmpty()) 
-			postfix = postfix + st.pop();
-		return postfix;
-	}
-	
-	public static int precedence(char symbol)
-	{
-		switch(symbol)
-		{
-		case '(':
-			return 0;
-		case '+':
-		case '-':
-			return 1;
-		case '*':
-		case '/':
-		case '%':
-			return 2;
-		case '^':
-			return 3;
-		default :
-			return 0;
-		}
-	}
-				
-	public static int evaluatePostfix(String postfix)
-	{
-		StackInt st = new StackInt(20);
-		
-		int x,y;
-		for(int i=0; i<postfix.length(); i++)
-		{
-			if(Character.isDigit(postfix.charAt(i)))
-				st.push(Character.getNumericValue(postfix.charAt(i)));
-			else
-			{
-				x=st.pop();
-				y=st.pop();
-				switch(postfix.charAt(i))
-				{
-				case '+':
-					st.push(y+x); break;
-				case '-':
-					st.push(y-x); break;
-				case '*':
-					st.push(y*x); break;
-				case '/':
-					st.push(y/x); break;
-				case '%':
-					st.push(y%x); break;
-				case '^':
-					st.push(power(y,x));
-				}
-			}
-		}
-		return st.pop();
-	}
-
-	public static int power(int b,int a)
-	{
-		int i,x=1;
-		for(i=1; i<=a; i++)
-			x=x*b;
-		return x;
-	}
 }
-

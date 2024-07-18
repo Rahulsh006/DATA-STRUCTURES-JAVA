@@ -3,26 +3,27 @@ Copyright (C) Deepali Srivastava - All Rights Reserved
 This code is part of DSA course available on CourseGalaxy.com    
 */
 
-package parentheses;
+package stackArray;
 
 import java.util.EmptyStackException;
 
 public class StackA 
 {
-    private char[] stackArray;
+    private int[] stackArray;
     private int top;
 	
     public StackA()
     {
-       	stackArray = new char[10];
+       	stackArray = new int[10];
     	top = -1;
     }
     
     public StackA(int maxSize)
     {
-    	stackArray = new char[maxSize];
-    	top=-1;
+    	stackArray = new int[maxSize];
+    	top = -1;
     }
+    
     public int size()
     {
     	return top+1;
@@ -38,23 +39,23 @@ public class StackA
     	return (top==stackArray.length-1);
     }
 
-    public void push(char x)
+    public void push(int x)
     {
     	if(isFull())
     	{
-    		System.out.println("Stack Overflow\n");
+    		System.out.println("Stack Overflow");
     		return;
     	}
     	top=top+1;
     	stackArray[top]=x;
     }
 
-    public char pop()
+    public int pop()
     {
-    	char x;
+    	int x;
     	if(isEmpty())
     	{
-    		System.out.println("Stack Underflow\n");
+    		System.out.println("Stack Underflow");
     		throw new EmptyStackException();
     	}
     	x=stackArray[top];
@@ -62,23 +63,20 @@ public class StackA
     	return x;
     }
 
-    public char peek()
+    public int peek()
     {
     	if(isEmpty())
     	{
-    		System.out.println("Stack Underflow\n");
+    		System.out.println("Stack Underflow");
     		throw new EmptyStackException();
     	}
     	return stackArray[top];
     }
 
-
     public void display()
     {
     	int i;
     	
-    	System.out.println("top= " + top);
-
     	if(isEmpty())
     	{
     		System.out.println("Stack is empty");
@@ -89,6 +87,4 @@ public class StackA
     		System.out.println(stackArray[i] + " ");
     	System.out.println();
     }
-
-
 }
