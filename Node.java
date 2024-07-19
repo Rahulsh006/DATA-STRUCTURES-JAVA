@@ -3,16 +3,18 @@ Copyright (C) Deepali Srivastava - All Rights Reserved
 This code is part of DSA course available on CourseGalaxy.com    
 */
 
-package circularLinkedList;
+package doubleLinkedList;
 
-public class Node 
+public class Node
 {
-     public int info;  
-     public Node link;
-    
-     public Node(int i) 
-	 {
+	public Node prev;
+	public int info;
+	public Node next; 
+	
+	public Node(int i) 
+	{
 		info=i;
-		link=null;
-	 }
+		prev=null;
+		next=null;
+	}
 }
