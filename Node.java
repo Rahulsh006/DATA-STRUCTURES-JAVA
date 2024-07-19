@@ -3,16 +3,16 @@ Copyright (C) Deepali Srivastava - All Rights Reserved
 This code is part of DSA course available on CourseGalaxy.com    
 */
 
-package HeaderList;
+package circularLinkedList;
 
 public class Node 
 {
-	public int info;  
-    public Node link;
-   
-    public Node(int i) 
-	{
+     public int info;  
+     public Node link;
+    
+     public Node(int i) 
+	 {
 		info=i;
 		link=null;
-	}
+	 }
 }
