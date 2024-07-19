@@ -3,14 +3,14 @@ Copyright (C) Deepali Srivastava - All Rights Reserved
 This code is part of DSA course available on CourseGalaxy.com    
 */
 
-package circularLinkedList;
+package singleLinkedList;
 
 public class ConcatenateDemo 
 {
 	public static void main(String[] args)
 	{
-		CircularLinkedList List1 = new CircularLinkedList();
-		CircularLinkedList List2 = new CircularLinkedList();
+		SingleLinkedList List1 = new SingleLinkedList();
+		SingleLinkedList List2 = new SingleLinkedList();
 		
 		System.out.println("Enter first list :- ");
 		List1.createList();
