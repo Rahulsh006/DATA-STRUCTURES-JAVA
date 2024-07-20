@@ -3,15 +3,16 @@ Copyright (C) Deepali Srivastava - All Rights Reserved
 This code is part of DSA course available on CourseGalaxy.com    
 */
 
-package sortedLinkedList;
+package SeparateChaining;
 
 public class Node 
 {
-	public int info;  
-    public Node link;
-   
-    public Node(int i) 
+	public studentRecord info;
+	public Node link;
+	
+	public Node(studentRecord rec) 
 	{
-		info=i;
+		info=rec;
+		link=null;
 	}
 }
