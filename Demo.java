@@ -3,7 +3,7 @@ Copyright (C) Deepali Srivastava - All Rights Reserved
 This code is part of DSA course available on CourseGalaxy.com    
 */
 
-package OpenAddressing;
+package OpenAddressing1;
 
 import java.util.Scanner;
 
@@ -45,13 +45,14 @@ public class Demo
 				
 				   studentRecord aRecord = new studentRecord(id,name);
 				   
-				   table.Insert(aRecord);
+				   table.Insert1(aRecord);
 				   break;
 				case 2 : 
 				   System.out.print("Enter a key to be searched : ");
 				   id = scan.nextInt();
 				   aRecord = table.Search(id); 
-				  				   
+				   
+				   
 				   if( aRecord==null )
 					   System.out.println("Key not found");
 				   else
