@@ -3,17 +3,17 @@ Copyright (C) Deepali Srivastava - All Rights Reserved
 This code is part of DSA course available on CourseGalaxy.com    
 */
 
-package binaryTree;
+package binarySearchTree;
 
 public class Node 
 {
 	Node lchild;
-	char info;
+	int info;
 	Node rchild;
 	
-	public Node(char ch)
+	public Node(int i)
 	{
-		info=ch;
+		info = i;
 		lchild=null;
 		rchild=null;
 	}
