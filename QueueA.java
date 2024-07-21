@@ -3,25 +3,25 @@ Copyright (C) Deepali Srivastava - All Rights Reserved
 This code is part of DSA course available on CourseGalaxy.com    
 */
 
-package queueArray;
+package binaryTree;
 
 import java.util.NoSuchElementException;
 
 public class QueueA 
 {
-	private int[] queueArray;
+	private Node[] queueArray;
     private int front;
     private int rear;
 	
     public QueueA()
     {
-       	queueArray = new int[10];
+       	queueArray = new Node[10];
     	front = -1;
     	rear = -1;
     }
     public QueueA(int maxSize)
     {
-    	queueArray = new int[maxSize];
+    	queueArray = new Node[maxSize];
     	front = -1;
     	rear = -1;
     }
@@ -43,7 +43,7 @@ public class QueueA
     		return rear-front+1;
     }
 
-    public void insert(int x)
+    public void insert(Node x)
     {
     	if(isFull())
     	{
@@ -56,9 +56,9 @@ public class QueueA
     	queueArray[rear]=x;
     }
 
-    public int Delete()
+    public Node Delete()
     {
-    	int x;
+    	Node x;
     	if(isEmpty())
     	{
     		System.out.println("Queue Underflow");
@@ -69,7 +69,7 @@ public class QueueA
     	return x;
     }
 
-    public int peek()
+    public Node peek()
     {
     	if(isEmpty())
     	{
@@ -95,4 +95,5 @@ public class QueueA
 
     	System.out.println();
     }
+
 }

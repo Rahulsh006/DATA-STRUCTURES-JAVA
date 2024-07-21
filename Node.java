@@ -3,16 +3,18 @@ Copyright (C) Deepali Srivastava - All Rights Reserved
 This code is part of DSA course available on CourseGalaxy.com    
 */
 
-package SeparateChaining;
+package binaryTree;
 
 public class Node 
 {
-	public studentRecord info;
-	public Node link;
+	Node lchild;
+	char info;
+	Node rchild;
 	
-	public Node(studentRecord rec) 
+	public Node(char ch)
 	{
-		info=rec;
-		link=null;
+		info=ch;
+		lchild=null;
+		rchild=null;
 	}
 }
