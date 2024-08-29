@@ -4,7 +4,7 @@ public class ATMCenter {
 	public void withdraw(int amount){
 		String name = Thread.currentThread().getName();
 		System.out.println("Entered into ATM center : "+name);
-		System.out.println("Taking the money : "+amount);
+		System.out.println("Taking the money : "+amounttt);
 		try {
 			Thread.sleep(1000);
 			System.out.println("Transaction completed : "+amount);
