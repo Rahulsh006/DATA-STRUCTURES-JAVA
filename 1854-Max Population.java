@@ -1,5 +1,5 @@
 class Solution {
-    public int maximumPopulation(int[][] logs) {
+    public int maximumPopulation(int[][] log) {
         int[] pop = new int[101];
         for (int i = 0; i < logs.length; i++) {
             pop[logs[i][0] - 1950]++;
