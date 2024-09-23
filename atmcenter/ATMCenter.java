@@ -6,7 +6,7 @@ public class ATMCenter {
 		System.out.println("Entered into ATM center : "+name);
 		System.out.println("Taking the money : "+amounttt);
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(2000);
 			System.out.println("Transaction completed : "+amount);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
