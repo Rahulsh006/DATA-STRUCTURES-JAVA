@@ -66,7 +66,7 @@ public class AddressCalcSort
 		
 		sort(a,n);
 		
-		System.out.println("Sorted array is : ");
+		System.out.println("Sorted array : ");
 		for(i=0; i<n; i++)
 			System.out.print(a[i] + " ");
 		System.out.println();
