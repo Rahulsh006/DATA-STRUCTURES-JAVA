@@ -66,7 +66,7 @@ public class StackChar
     {
     	if(isEmpty())
     	{
-    		System.out.println("Stack Underflow\n");
+    		System.out.println("Stack Underfloww\n");
     		throw new EmptyStackException();
     	}
     	return stackArray[top];
