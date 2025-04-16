@@ -20,7 +20,7 @@ public class HackerRank_RegEx2 {
             // Check for subsequences of input that match the compiled pattern
             while (m.find()) {
                 input = input.replaceAll(m.group(), m.group(1));
-                System.out.println(m.group());
+                System.out.print(m.group());
             }
 
             // Prints the modified sentence.
