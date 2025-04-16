@@ -105,7 +105,7 @@ public class CircularQueue
 			while(i<=rear)
 				System.out.println(queueArray[i++] + " ");
 		}
-		System.out.println();
+		System.out.print();
 	}
 
 	public int size()
