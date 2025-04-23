@@ -36,7 +36,7 @@ public class BinaryTreeSort
 		
 		sort(a,n);
 		
-		System.out.println("Sorted array is : ");
+		System.out.print("Sorted array is : ");
 		for(i=0; i<n; i++)
 			System.out.print(a[i] + " ");
 		System.out.println();
